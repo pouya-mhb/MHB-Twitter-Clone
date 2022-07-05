@@ -15,7 +15,17 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from MHB.views import register,user_login,user_logout,profile,profile_setting,follow,unfollow,feed
 
 urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('register/', user_login , register, admin.site.urls),
+    path('login/', admin.site.urls),
+    path('logout/', user_logout, name='user_logout'),
+    path('<str:username>/',profile, name='profile'),
+    path('<str:username>/setting', profile_setting, name='profile_setting'),
+    path('follow/<str:username>',follow, name='follow'),# return to father page
+    path('unfollow/<str:username>',unfollow, name='unfollow'),  # return to father page
+    path ('feed/',feed,name='feed'),
     path('admin/', admin.site.urls),
 ]
