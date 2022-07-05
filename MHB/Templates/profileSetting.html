@@ -1,0 +1,55 @@
+{% extends 'templates/base.html' %}
+{% load static %}
+{% block content %}
+<br>
+<div class="container">
+    <div class="card">
+        <h5 class="card-header">Profile Setting</h5>
+        <div class="card-body">
+            <h6 class="card-title">Edit and save</h6>
+            <form method="POST">
+                {% csrf_token %}
+                <fieldset>
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="">Avatar</label>
+                        <input name="user_avatar" type="file" class="form-control" id="user_avatar">
+                    
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">First Name</label>
+                        <input name="first_name" type="text" class="form-control" id="first_name" aria-describedby="" placeholder={{user_first_name}}>
+                        
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputPassword1" class="form-label">Last Name</label>
+                        <input name="last_name" type="text" class="form-control" id="last_name">
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputPassword1" class="form-label">Birthday</label>
+                        <input name="last_name" type="date" class="form-control" id="Birthday" placeholder="">
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputPassword1" class="form-label">bio</label>
+                        <input name="bio" type="text" class="form-control" id="bio" placeholder=>
+                    </div>
+                    <div class="mb-3">
+                        <label for="username" class="form-label">Username</label>
+                        <input name="username" type="text" class="form-control" id="username" aria-describedby="username" placeholder={{username}}>
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Email</label>
+                        <input name="email" type="text" class="form-control" id="email" aria-describedby="emailHelp" placeholder={{user_email}}>
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputPassword1" class="form-label">New Password</label>
+                        <input name="password" type="password" class="form-control" id="password" required>
+                    </div>
+                </fieldset>
+                <button type="submit" class="btn btn-success" method="POST">Save Changes</button>
+                <a href="{% url 'user_profile' username %}" class="btn btn-danger">Cancel</a>
+            </form>
+        </div>
+    </div>
+</div>
+<br>
+{% endblock %} 

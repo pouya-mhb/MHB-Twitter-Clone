@@ -1,0 +1,39 @@
+{% extends 'templates/base.html' %}
+{% load bootstrap5 %}
+
+    {% block content %}
+    <div class="container-fluid">
+        <br>
+        <div class="card">
+            <h5 class="card-header display-6">Login</h5>
+            <div class="card-body">
+            <form method="POST">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label display-6">Username</label>
+                    <input name="username" type="text" class="form-control" id="username" aria-describedby="emailHelp" required>
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label display-6">Password</label>
+                    <input name="password" type="password" class="form-control" id="password" required>
+                </div>
+                {% buttons %}
+                <button type="submit" class="btn btn-primary display-6">Login</button>
+                {% endbuttons %}
+            </form>
+            <p>
+                Don't have an account?
+                <a href="{% url 'register' %}" class="">Create Account</a>
+            </p>
+            {% if messages %}
+            <div class="alert alert-danger messages" role="alert">
+                {% for message in messages %}
+                {{ message }}
+            </div>
+            {% endfor %}
+            {% endif %}
+            </div>
+        </div>
+        <br>
+    </div>
+    {% endblock %}

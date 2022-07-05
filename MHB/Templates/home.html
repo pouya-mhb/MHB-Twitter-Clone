@@ -1,0 +1,25 @@
+{% extends 'templates/base.html' %}
+{% load static %}
+{% block content %}
+<div class="container bg-MHB">
+    <div class="row">
+        <div class="col-6 text-center">
+            <br>
+            <div class="card" style="width:auto;">
+                <div class="card-body">
+                    <h5 class="card-title display-6">Happening now</h5>
+                    <h5 class="card-title display-4">Join MHB Today</h5>
+                    <p>Join us today, Expand your network, Keep in touch</p>
+                        <a href="{% url 'register' %}" class="btn btn-secondary">Create Account</a>
+                        <a href="{% url 'user_login' %}" class="btn btn-primary">Login</a>
+                    </p>
+                </div>
+            </div>
+            <br>
+        </div>
+        <div class="col-4">
+            <img style="margin-left: 20%;" src="{% static 'mhb5.png' %}" alt="" width="300" height="300">
+        </div>
+    </div>
+</div>
+{% endblock %}
