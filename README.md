@@ -1,6 +1,6 @@
 # MHB Twitter Clone
 
-**This is a Twitter clone that I've create for fun**
+**This is a Twitter clone that I've create for my university Advanced software design course**
 
  This project builts on 
  -  Django
