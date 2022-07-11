@@ -1,12 +1,11 @@
-from operator import truediv
 from django.db import models
-from django.contrib.auth.models import User 
+from django.contrib.auth.models import User
 
 # Create your models here.
 
 class Profile (models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE,auto_created=True,blank=False,null=False)
-    following = models.ManyToManyField(User, related_name='', on_delete=models.CASCADE,blank=True,null=True)
+    # following = models.ManyToManyField(User,blank=True,null=False)
     firstName = models.CharField(max_length=100)
     lastName = models.CharField(max_length=100)
     username = models.CharField(max_length=20)
@@ -23,9 +22,10 @@ class Profile (models.Model):
     class Meta ():
         ordering = ['-created_at']
 
+
 class Post (models.Model):
     created_by = models.ForeignKey(Profile, on_delete=models.CASCADE,auto_created=True)
-    liked_by = models.ManyToManyField(Profile,on_delete=models.CASCADE)
+    # liked_by = models.ManyToManyField(Profile,auto_created=True)
     created_at = models.DateTimeField(auto_created=True,auto_now=True)
     content = models.TextField(max_length=255)
     image = models.ImageField(blank=True, null=True)
@@ -35,7 +35,7 @@ class Post (models.Model):
 
 class Like (models.Model):
     post = models.ForeignKey(Post, on_delete=models.CASCADE,auto_created=True)
-    liked_by = models.ManyToManyField(Profile, on_delete=models.CASCADE,auto_created=True)
+    liked_by = models.ForeignKey(Profile,on_delete=models.CASCADE,auto_created=True)
     created_at = models.DateTimeField(auto_created=True,auto_now=True)
 
     class Meta ():
@@ -43,7 +43,7 @@ class Like (models.Model):
 
 class Comment (models.Model):
     post = models.ForeignKey(Post, on_delete=models.CASCADE,auto_created=True)
-    commented_by = models.ManyToManyField(Profile,on_delete=models.CASCADE)
+    commented_by = models.ForeignKey(Profile,on_delete=models.CASCADE,auto_created=True)
     created_at = models.DateTimeField(auto_created=True,auto_now=True)
     content = models.TextField(max_length=255)
     image = models.ImageField(blank=True, null=True)
