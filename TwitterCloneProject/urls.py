@@ -20,8 +20,8 @@ from MHB.views import register,user_login,user_logout,profile,profile_setting,fo
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', register,name='register'),
-    path('home/', home,name='home'),
+    path('register/', register,name='register'),
+    path('', home,name='home'),
     path('login/', user_login,name='user_login'),
     path('logout/', user_logout, name='user_logout'),
     path('<str:username>/',profile, name='profile'),
