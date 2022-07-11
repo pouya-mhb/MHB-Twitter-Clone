@@ -46,7 +46,7 @@
                     <div class="card-body">
                         <h5 class="card-title">
                             <img src={{avatar}} alt={{user_avatar}}>
-                            <a href="{% url 'user_profile' mhb.MHBs_created_by %}" class="card-title">
+                            <a href="{% url 'profile' mhb.created_by %}" class="card-title">
                                 @{{mhb.MHBs_created_by }}</a>
                             <!-- this pass the 'url_profile' and the username = mhb.MHBs_created_by to the feed view -->
                         </h5>
